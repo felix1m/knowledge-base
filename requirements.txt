@@ -1,3 +1,4 @@
+alembic==0.5.0
 Flask==0.10.1
 Werkzeug==0.9.1
 Flask-Admin==1.0.8
@@ -12,6 +13,7 @@ Flask-WTF==0.9.5
 flask-s3==0.1.7
 flask-classy==0.6.10
 Flask-SQLAlchemy==1.0
+MySQL-python==1.2.5
 itsdangerous==0.21
 Jinja2==2.7
 jsmin==2.0.3

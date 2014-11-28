@@ -1,7 +1,5 @@
 {% set navigation_bar = [
   ('dashboard.index', 'dashboard', 'Dashboard'),
-  ('stores.index', 'stores', 'Stores'),
-  ('customer-profile.index', 'customer-profile', 'Kundenprofil')
   ] -%}
 
   <nav class="topbar">
@@ -18,7 +16,6 @@
           <img class="profile-thumb" src="{{ url_for('static', filename = current_user.image_path) }}"> {{current_user.full_name}}
         </a><br>
         <ul id="profile" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false">
-          <li role="menuitem"><a href="{{ url_for('user-profile.index') }}">Profil</a></li>
           <li role="menuitem"><a href="{{ url_for('security.logout') }}">Logout</a></li>
         </ul>
       </div>
@@ -34,15 +31,6 @@
         </li>
         {% endfor %}
       </ul>
-      <div class="right">
-        <!-- inline css is temporary fix for dropdown alignment -->
-        <a style="padding-left: 25px;" data-dropdown="add" data-options="is_hover:true" aria-controls="add" aria-expanded="true">Hinzufügen</a><br>
-        <ul id="add" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false">
-          <li role="menuitem"><a href="{{ url_for('shouts.create_shout') }}">Shout</a></li>
-          <li role="menuitem"><a href="{{ url_for('rewards.create_reward') }}">Reward</a></li>
-          <li role="menuitem"><a href="{{ url_for('stores.create_store') }}">Store</a></li>
-          <li role="menuitem"><a href="{{ url_for('managers.create_manager') }}">Storemanager</a></li>
-        </ul>
-      </div>
+
     </div>
   </nav>

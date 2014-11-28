@@ -24,6 +24,7 @@ kb/lib
 kb/include
 pyenv
 files
+repos
 kb/frontend/static/css/
 kb/frontend/static/css/kb.css
 kb/frontend/static/js/*

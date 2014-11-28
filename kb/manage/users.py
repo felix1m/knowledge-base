@@ -13,17 +13,20 @@ from flask_security.registerable import register_user
 from werkzeug.datastructures import MultiDict
 from flask.ext.security.utils import encrypt_password
 
-from ..services import mobile_users
+from ..services import users
 
 
 class CreateUserCommand(Command):
     """Creates and returns a new mobile user from the given parameters for API testing."""
 
     def run(self):
+        first_name = prompt('First Name')
+        last_name =  prompt('Last Name')
+
         email = prompt('Email')
         password = prompt('Password')
         password = encrypt_password(password)
-        user = mobile_users.create(email=email, password=password)
+        user = users.create(email=email, password=password, first_name=first_name, last_name=last_name)
 
         return user
 

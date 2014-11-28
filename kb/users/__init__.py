@@ -6,7 +6,7 @@
     kb users package
 """
 
-from .models import MobileUser, StoreManager, UserStoreAffiliation, User, Role
+from .models import User, Role
 from .services import *
 
 

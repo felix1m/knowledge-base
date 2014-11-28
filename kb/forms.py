@@ -6,7 +6,7 @@
     consolidated forms module
 """
 
-from .core import kbError, kbFormError
+from .core import KBError, KBFormError
 
 # from .products.forms import *
 # from .stores.forms import *
@@ -29,10 +29,10 @@ import wtforms_json
 wtforms_json.init()
 
 class Form(BaseForm):
-    """Validates form and returns parsed dict. Raises kbFormError when invalid."""
+    """Validates form and returns parsed dict. Raises KBFormError when invalid."""
     def validated_result(self):
         if not self.validate_on_submit():
-            raise kbFormError(self.errors)
+            raise KBFormError(self.errors)
         return self.patch_data
 
 

@@ -50,7 +50,7 @@ deploy_staging() {
 
     echo -e \"${GREEN}DONE${COLOR_OFF}\" "
 
-  ssh -T $STAGING_SSH_CONFIG $commands
+  ssh -T# $STAGING_SSH_CONFIG $commands
 }
 
 case $1 in

@@ -29,24 +29,24 @@ security = Security()
 # Flask-Restless API Manager
 api_manager = APIManager()
 
-admin = Admin(name='kb')
+admin = Admin(name='Knowledge Base Admin')
 
 
-class kbError(Exception):
+class KBError(Exception):
     """Base application error class."""
 
     def __init__(self, msg):
         self.msg = msg
 
 
-class kbFormError(Exception):
+class KBFormError(Exception):
     """Raise when an error processing a form occurs."""
 
     def __init__(self, errors=None):
         self.errors = errors
 
 
-class kbView(FlaskView):
+class KBView(FlaskView):
     @classmethod
     def get_route_base(cls):
         route_base = cls.__name__[:-4]
@@ -151,7 +151,7 @@ class Service(object):
         obj = self.get(id)
         if not obj:
             model_name = self.__model__.__name__
-            raise kbError('No %s exists for provided id' % model_name)
+            raise KBError('No %s exists for provided id' % model_name)
 
         return obj
 

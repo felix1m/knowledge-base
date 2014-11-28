@@ -12,7 +12,7 @@ import inspect
 
 from flask import Blueprint
 from flask.json import JSONEncoder as BaseJSONEncoder
-from core import kbView
+from core import KBView
 
 
 def register_blueprints(app, package_name, package_path):
@@ -30,7 +30,7 @@ def register_blueprints(app, package_name, package_path):
             item = getattr(m, item)
             if isinstance(item, Blueprint):
                 app.register_blueprint(item)
-            if inspect.isclass(item) and issubclass(item, kbView) \
+            if inspect.isclass(item) and issubclass(item, KBView) \
                                      and item.__name__ is not "kbJSONView":
                 item.register(app)
             rv.append(item)

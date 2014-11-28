@@ -13,14 +13,13 @@ from flask import render_template, jsonify, g, request
 from flask_security import login_required
 
 # Imports for Flask-Admin
-from flask.ext.admin.contrib.sqla import ModelView
 from flask_wtf.csrf import CsrfProtect
 from ..helpers import JSONEncoder
 
 from .. import factory
 from . import assets
-from ..models import *
-from ..core import kbError, kbFormError, db, admin
+from admin import setup_admin
+from ..core import KBError, KBFormError
 
 csrf = CsrfProtect()
 
@@ -31,7 +30,7 @@ def create_app(settings_override=None):
     # Init assets
     assets.init_app(app)
     csrf.init_app(app)
-    admin.init_app(app)
+    setup_admin(app)
 
     app.json_encoder = JSONEncoder
 
@@ -39,8 +38,8 @@ def create_app(settings_override=None):
     if not app.debug:
         for e in [500, 404]:
             app.errorhandler(e)(handle_error)
-    app.errorhandler(kbError)(on_kb_error)
-    app.errorhandler(kbFormError)(on_kb_form_error)
+    app.errorhandler(KBError)(on_kb_error)
+    app.errorhandler(KBFormError)(on_kb_form_error)
 
     return app
 

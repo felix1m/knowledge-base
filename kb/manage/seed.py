@@ -27,10 +27,26 @@ default_pw = 'testpw'
 class SeedDatabase():
     def seed(self, app):
 
+      roles_to_insert = [
+          dict(name='Admin', description='System Administrator; has access to admin panel')
+      ]
+      for item in roles_to_insert:
+          roles.create(**item)
+
+      users_to_insert = [
+          ['Philipp', 'Müller', 'philipp@user.de'],
+          ['Felix', 'Müller', 'felix@user.de'],
+      ]
+      for item in users_to_insert:
+          users.create(first_name=item[0],
+                              last_name=item[1],
+                              email=item[2],
+                              roles=[roles.by_name('Admin')],
+                              password=default_pw)
 
 
 
-        # return call_all(CreateContent())
+      # return call_all(CreateContent())
 
 
 # helper to call all class methods

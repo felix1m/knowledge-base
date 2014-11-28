@@ -7,7 +7,7 @@
 """
 
 from .models import *
-from ..core import Service, kbError
+from ..core import Service, KBError
 
 from flask import json, current_app, g
 
@@ -27,7 +27,7 @@ class UserService(Service):
     def current(self):
         user = current_user
         if not user:
-            raise kbError(u'No current user')
+            raise KBError(u'No current user')
         return user._get_current_object()
 
     def update_current(self, **kwargs):

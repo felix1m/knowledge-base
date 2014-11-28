@@ -6,7 +6,9 @@
     services module
 """
 
-from .users import UserService
+from .users import UserService, RoleService
 
 
 users = UserService()
+
+roles = RoleService()
