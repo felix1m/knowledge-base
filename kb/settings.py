@@ -47,10 +47,18 @@ LANGUAGES = {
     'en': 'English'
 }
 
-APP_ROOT = os.path.abspath(os.path.join(__file__, '..'))  # refers to application_top
-APP_UPLOAD = os.path.join(APP_ROOT, 'files')
+APP_ROOT = os.path.abspath(os.path.join(__file__, '..', '..'))  # refers to application_top
 
+APP_FILES = os.path.join(APP_ROOT, 'files')
 try:
-    os.mkdir(APP_UPLOAD)
+    os.mkdir(APP_FILES)
+except OSError:
+    pass
+
+print APP_FILES
+
+APP_REPOS = os.path.join(APP_ROOT, 'repos')
+try:
+    os.mkdir(APP_REPOS)
 except OSError:
     pass

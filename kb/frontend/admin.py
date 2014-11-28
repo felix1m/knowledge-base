@@ -12,7 +12,7 @@ from flask.ext.security import current_user
 from flask.ext.security.utils import encrypt_password
 from flask import Blueprint, render_template, jsonify, request, current_app as app
 
-from ..settings import APP_UPLOAD
+from ..settings import APP_REPOS, APP_FILES
 from ..models import User
 from ..core import db, admin
 from wtforms.fields import PasswordField
@@ -26,14 +26,31 @@ class AdminIndex(AdminIndexView):
     def is_accessible(self):
         return allowed()
 
-
-class CustomFileAdmin(FileAdmin):
-    can_mkdir = False
-    can_delete_dirs = False
-    allowed_extensions = ('jpeg', 'jpg', 'gif', 'png', 'pdf')
-
+class BaseFileAdmin(FileAdmin):
     def is_accessible(self):
         return allowed()
+
+    def is_accessible_path(self, path):
+        if len(path):
+             return path[0] != '.'
+        return True
+
+
+class CustomFileAdmin(BaseFileAdmin):
+    pass
+    # can_mkdir = False
+    # can_delete_dirs = False
+    # allowed_extensions = ('jpeg', 'jpg', 'gif', 'png', 'pdf')
+
+
+class RepoAdmin(BaseFileAdmin):
+    pass
+    # can_mkdir = False
+    # can_delete = False
+    # can_rename = False
+    # can_delete_dirs = False
+    # can_upload = False
+
 
 class UserAdmin(ModelView):
     column_exclude_list = list = ('password',)
@@ -55,14 +72,12 @@ class UserAdmin(ModelView):
             model.password = encrypt_password(model.password2)
 
 
-path = APP_UPLOAD
-
-
 def setup_admin(app):
     admin.index_view = AdminIndex()
-    admin.init_app(app)
     # Create admin interface
     admin.add_view(UserAdmin(User, db.session))
-    admin.add_view(CustomFileAdmin(path, '/files/', name='Static Files'))
+    admin.add_view(CustomFileAdmin(APP_FILES, '/files/', name='Static Files'))
+    admin.add_view(RepoAdmin(APP_REPOS, '/repos/', name='Git Repos'))
+    admin.init_app(app)
 
 
