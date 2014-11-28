@@ -68,8 +68,6 @@ def setup_logging(app):
         return name + ".gz"
 
     def rotator(source, dest):
-        print "asd"
-        print source
         with open(source, "rb") as sf:
             data = sf.read()
             compressed = zlib.compress(data, 9)

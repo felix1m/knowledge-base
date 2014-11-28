@@ -19,7 +19,7 @@ SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost:3306/kb'
 
 # CELERY_BROKER_URL = 'redis://33.33.33.10:6379/0'
 
-MAX_CONTENT_LENGTH = 1 * 1024 * 1024 # 1mb
+MAX_CONTENT_LENGTH = 4 * 1024 * 1024 # 1mb
 
 
 SECURITY_POST_LOGIN_VIEW = '/'
@@ -54,8 +54,6 @@ try:
     os.mkdir(APP_FILES)
 except OSError:
     pass
-
-print APP_FILES
 
 APP_REPOS = os.path.join(APP_ROOT, 'repos')
 try:

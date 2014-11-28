@@ -42,8 +42,6 @@ def receive_hook():
         git = GitUpdater(Repository(payload['repository']))
         git.update()
 
-
-
         return 'OK', 200
 
     except MissingPayloadParam, e:
@@ -58,7 +56,6 @@ def receive_hook():
 
 
 class Repository(object):
-
     def __init__(self, json_dict):
         super(Repository, self).__init__()
         self.name = json_dict['name']
@@ -126,7 +123,4 @@ class GitUpdater(object):
         else:
             self.exec_command(self.repo.clone_command, APP_REPOS)
         self.create_files_dir()
-
-
-
 

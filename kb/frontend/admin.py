@@ -10,7 +10,7 @@ from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin import AdminIndexView
 from flask.ext.security import current_user
 from flask.ext.security.utils import encrypt_password
-from flask import Blueprint, render_template, jsonify, request, current_app as app
+from flask import Blueprint, render_template, jsonify, request, current_app as app, send_file
 
 from ..settings import APP_REPOS, APP_FILES
 from ..models import User
@@ -19,7 +19,6 @@ from wtforms.fields import PasswordField
 
 def allowed():
     return (current_user.is_authenticated() and current_user.has_role('Admin'))
-
 
 # the view that gets used for the admin home page
 class AdminIndex(AdminIndexView):
@@ -37,19 +36,17 @@ class BaseFileAdmin(FileAdmin):
 
 
 class CustomFileAdmin(BaseFileAdmin):
-    pass
-    # can_mkdir = False
-    # can_delete_dirs = False
-    # allowed_extensions = ('jpeg', 'jpg', 'gif', 'png', 'pdf')
+    can_mkdir = False
+    can_delete_dirs = False
+    allowed_extensions = ('jpeg', 'jpg', 'gif', 'png', 'pdf')
 
 
 class RepoAdmin(BaseFileAdmin):
-    pass
-    # can_mkdir = False
-    # can_delete = False
-    # can_rename = False
-    # can_delete_dirs = False
-    # can_upload = False
+    can_mkdir = False
+    can_delete = False
+    can_rename = False
+    can_delete_dirs = False
+    can_upload = False
 
 
 class UserAdmin(ModelView):
@@ -61,7 +58,6 @@ class UserAdmin(ModelView):
         return allowed()
 
     def scaffold_form(self):
-
         form_class = super(UserAdmin, self).scaffold_form()
 
         form_class.password2 = PasswordField('New Password')
@@ -81,3 +77,14 @@ def setup_admin(app):
     admin.init_app(app)
 
 
+bp = Blueprint('static-files', __name__)
+
+@bp.route('/repos/<path:path>')
+def static_repos(path):
+    path = path.replace("..","")
+    return send_file(os.path.join(APP_REPOS, path))
+
+@bp.route('/files/<path:path>')
+def static_files(path):
+    path = path.replace("..","")
+    return send_file(os.path.join(APP_FILES, path))
