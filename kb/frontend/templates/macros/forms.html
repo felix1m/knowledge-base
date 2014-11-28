@@ -1,0 +1,49 @@
+{% macro render_field(field) -%}
+  {% set classes = kwargs.pop('classes', '') -%}
+  {% set container = kwargs.pop('container', 'small-12 columns') -%}
+  {% set row = kwargs.pop('row', True) -%}
+  {% set with_label = kwargs.pop('with_label', False) -%}
+
+  {% if field.type.endswith('SelectMultipleField') %}
+    {% set with_label = True -%}
+  {% endif %}
+
+  {% set placeholder = '' %}
+  {% if not with_label %}
+      {% set placeholder = field.label.text %}
+  {% endif %}
+
+  {% if field.errors %}
+    {% set classes = classes + "error" -%}
+  {% endif %}
+
+    {% if row -%}
+      <div class="row">
+    {% endif -%}
+
+    {% if container -%}
+      <div class="{{container}}">
+    {% endif -%}
+
+    {% if with_label -%}
+      <label>
+      {{ field.label.text }}
+    {% endif -%}
+
+    {% if field.type == 'BooleanField' -%}
+        <div>
+          <input class"{{ classes }}" id="{{field.id}}" type="checkbox" name="{{ field.label.text|safe }}" value="{{ field.label.value|safe }}">
+          <label for="{{field.id}}">{{ field.label.text|safe }}</label>
+        </div>
+    {% else -%}
+      {{ field(placeholder=placeholder, class=classes) }}
+    {% endif -%}
+
+    {% if field.errors -%}
+      <small class="error">{% for error in field.errors -%}{{ error }}{% endfor -%}</small>
+    {% endif -%}
+
+    {% if with_label -%}</label>{% endif -%}
+    {% if container -%}</div>{% endif -%}
+    {% if row -%}</div>{% endif -%}
+{% endmacro -%}

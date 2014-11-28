@@ -1,0 +1,17 @@
+{% macro render_store_info(store) %}
+<li>
+  <strong>Anschrift</strong>
+  <p>
+    {{ store.address }}<br>
+    {{ store.zip_code }} {{ store.city }}<br>
+    {{ store.country }}<br>
+  </p>
+</li>
+<li>
+  <strong>Kontaktdaten</strong>
+  <p>
+    {{ store.phone }}<br>
+    {{ store.email }}<br>
+  </p>
+</li>
+{% endmacro %}

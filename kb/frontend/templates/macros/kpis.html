@@ -1,0 +1,9 @@
+{% macro render_kpis(kpis) %}
+    {% for kpi in kpis %}
+    <li class="kpi-container">
+      <img src="{{ url_for('static', filename = kpi.image_path) }}">
+      <div class="kpi-value">{{ kpi.value }}</div>
+      <div class="kpi-label">{{ kpi.label }}</div>
+    </li>
+    {% endfor %}
+{% endmacro %}

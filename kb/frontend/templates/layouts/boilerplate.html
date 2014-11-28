@@ -1,0 +1,45 @@
+{% set active_page = active_page|default('index') -%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block page_title %}kb{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link href="//fonts.googleapis.com/css?family=Titillium+Web:200italic,200,300italic,300,400italic,400,600italic,600,700italic,700,900" rel="stylesheet" type="text/css">
+  {% assets "css_kb" -%}
+  <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+</head>
+<body>
+
+  {% if current_user.is_authenticated() -%}
+  {% include "layouts/_menu.html" %}
+  {%- endif %}
+  {% block flash_messages %}
+  {% include "layouts/_messages.html" %}
+  {% endblock %}
+
+  <div>
+    {% block body %}
+    Body
+    {% endblock %}
+  </div>
+
+  <!--[if lt IE 9]>
+  {% assets "shivs" -%}
+  <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+  <![endif]-->
+
+  {% assets "js_vendor" -%}
+  <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+  {% assets "js_main" -%}
+  <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+</body>
+</html>

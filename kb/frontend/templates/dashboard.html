@@ -1,0 +1,21 @@
+{% extends "layouts/boilerplate.html" %}
+{% set active_page = "dashboard" %}
+{% from "macros/graph.html" import render_graph %}
+{% from "macros/kpis.html" import render_kpis %}
+
+{% block body %}
+<div class="kpi-section row">
+  <ul class="small-12 columns small-block-grid-2 medium-block-grid-3 large-block-grid-{{ kpis | count }}">
+    {{ render_kpis(kpis) }}
+  </ul>
+</div>
+
+<div class="graph-section row">
+  <ul class="small-12 columns small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+    {% for graph in graphs %}
+      {{ render_graph(graph) }}
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

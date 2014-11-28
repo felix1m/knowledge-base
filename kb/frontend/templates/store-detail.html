@@ -1,0 +1,115 @@
+{% extends "layouts/boilerplate.html" %}
+{% set active_page = "stores" %}
+{% from "macros/kpis.html" import render_kpis %}
+{% from "macros/graph.html" import render_graph %}
+{% from "macros/store_info.html" import render_store_info %}
+{% from "macros/forms.html" import render_field %}
+
+{% block body %}
+
+<div class="header row">
+  <img class="small-3 columns store-logo th" src="{{ url_for('static', filename=store.customer.image_path) }}">
+
+    <div class="small-9 columns">
+      <a href="{{ url_for('stores.index') }}">&lt; Zur Übersicht</a>
+      <h3 class"title">{{store.name}}</h3>
+      <ul class="small-block-grid-3">
+        {{ render_store_info(store) }}
+        <li>
+          <a href="#">Bearbeiten</a>
+        </li>
+      </ul>
+    </div>
+    <ul id="store-detail-tabs" class="small-9 columns tabs" data-tab>
+      <dd class="active"><a href="#store-panel-1">Profil</a></dd>
+      <dd><a href="#store-panel-2">Rewards</a></dd>
+      <dd><a href="#store-panel-3">Shouts</a></dd>
+      <dd><a href="#store-panel-4">Statistiken</a></dd>
+    </ul>
+</div>
+
+<div class="row">
+
+  <div class="tabs-content">
+
+    <div class="content active" id="store-panel-1">
+      <div class="kpi-section row">
+        <ul class="small-12 columns small-block-grid-2 medium-block-grid-3 large-block-grid-{{ kpis | count }}">
+          {{ render_kpis(kpis) }}
+        </ul>
+      </div>
+      <div class="managers row">
+          <h4>Storemanager</h4>
+          {% for manager in managers %}
+          <hr>
+          <ul>
+            <li class="manager-container row">
+              <div class="small-4 columns">
+                <img class="profile-thumb" src="{{ url_for('static', filename = manager.image_path) }}">
+              </div>
+              <div class="small-8 columns">
+                <h3 class"title">{{manager.full_name}}</h3>
+              </div>
+            </li>
+          </ul>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="content" id="store-panel-2">
+      {% for reward in rewards %}
+      <ul>
+        <li class="row rewards-list">
+          <div class="small-4 columns kb-circle">
+            <div>
+              <h1>{{ reward.number_of_kbs_necessary }}</h1>
+              <p>kbs</p>
+            </div>
+          </div>
+
+          <div class="small-8 columns">
+            <h3 class"title">{{reward.name}}</h3>
+          </div>
+          <!--hr-->
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+
+    <div class="content" id="store-panel-3">
+
+      {% for shout in shouts %}
+      <ul>
+        <li class="row">
+          <div class="small-4 columns">
+            <p>graph</p>
+          </div>
+
+          <div class="small-8 columns">
+            <h3 class"title">{{shout.name}}</h3>
+          </div>
+          <hr>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+
+    <div class="content" id="store-panel-4">
+      <ul class="small-12 columns small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        {% for graph in graphs %}
+          {{ render_graph(graph) }}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+{% endblock %}

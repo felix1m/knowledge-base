@@ -1,0 +1,38 @@
+{% extends "layouts/boilerplate.html" %}
+{% set active_page = "stores" %}
+{% from "macros/forms.html" import render_field %}
+
+{% block body %}
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1>Shout erstellen</h1>
+    <hr>
+    <form action="/shouts/create" method="post">
+      {{ form.hidden_tag() }}
+
+      {{ render_field(form.name) }}
+      {{ render_field(form.affiliated_users) }}
+
+      <div class="row">
+      {{ render_field(form.start, with_label=True, seperate_row=False,
+                      container="small-6 columns", row=False) }}
+      {{ render_field(form.end, with_label=True, seperate_row=False,
+                      container="small-6 columns", row=False) }}
+      </div>
+
+      {{ render_field(form.age_min) }}
+      {{ render_field(form.age_max) }}
+      {{ render_field(form.gender) }}
+      {{ render_field(form.returning_users) }}
+      {{ render_field(form.activity) }}
+      {{ render_field(form.budget_cap) }}
+      {{ render_field(form.industries) }}
+      {{ render_field(form.stores) }}
+
+      <input class="button" type="submit" value="Fortfahren" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}

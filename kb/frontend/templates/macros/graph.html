@@ -1,0 +1,9 @@
+{% macro render_graph(graph) %}
+<li class="graph-container">
+  <div class="graph-content">
+    <h6>{{ graph.name }}</h6>
+    <img class="graph-loading-indicator" src="{{ url_for('static', filename = 'img/spinner.gif') }}">
+    <div class="graph" id="{{ graph.id }}" data-source="{{ graph.path }}" data-labels="{{ graph.labels }}" style="display:none"></div>
+  </div>
+</li>
+{% endmacro %}

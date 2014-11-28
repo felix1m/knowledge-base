@@ -1,0 +1,23 @@
+{
+  "name": "kb-api",
+  "version": "0.0.0",
+  "description": "kb dashboard and api",
+  "main": "none",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philippmuller/kb-api.git"
+  },
+  "author": "Felix Müller, Philipp Müller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/philippmuller/kb-api/issues"
+  },
+  "engine": "node 0.10.29"
+}

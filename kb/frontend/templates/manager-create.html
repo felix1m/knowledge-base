@@ -1,0 +1,26 @@
+{% extends "layouts/boilerplate.html" %}
+{% set active_page = "stores" %}
+{% from "macros/forms.html" import render_field %}
+
+{% block body %}
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1>Store Manager anlegen</h1>
+    <hr>
+    <form enctype=multipart/form-data action="{{ url_for('managers.create_manager') }}" method="post">
+      {{ form.hidden_tag() }}
+
+      {{ render_field(form.first_name) }}
+      {{ render_field(form.last_name) }}
+      {{ render_field(form.email) }}
+      {{ render_field(form.image) }}
+      {{ render_field(form.stores) }}
+
+      <input class="button" type="submit" value="Fortfahren" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
