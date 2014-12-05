@@ -4,18 +4,132 @@
 {% from "macros/kpis.html" import render_kpis %}
 
 {% block body %}
-<div class="kpi-section row">
-  <ul class="small-12 columns small-block-grid-2 medium-block-grid-3 large-block-grid-{{ kpis | count }}">
-    {{ render_kpis(kpis) }}
-  </ul>
-</div>
 
-<div class="graph-section row">
-  <ul class="small-12 columns small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-    {% for graph in graphs %}
-      {{ render_graph(graph) }}
-    {% endfor %}
-  </ul>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel">
+      <h1>Feed Template</h1>
+    </div>
+  </div>
 </div>
+<iframe style="margin: 5%; width: 90%; height: 800px" src="https://docs.google.com/document/d/1bliGuvcwtTnEAcjxK0-SbRx4oM0No8tAQ6KJ2UTmZJU/pub?embedded=true"></iframe>
+
+<div id="disqus_thread"></div>
+   <script type="text/javascript">
+       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+       var disqus_shortname = 'edu-knowledge-base'; // required: replace example with your forum shortname
+
+       /* * * DON'T EDIT BELOW THIS LINE * * */
+       (function() {
+           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       })();
+   </script>
+   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<div class="row">
+  <div class="large-3 columns ">
+    <div class="panel">
+      <a href="#"><img src="http://placehold.it/300x240&text=[img]"/></a>
+      <h5><a href="#">Your Name</a></h5>
+      <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
+        <section class="section">
+          <h5 class="title"><a href="#">Section 1</a></h5>
+        </section>
+        <section class="section">
+          <h5 class="title"><a href="#">Section 2</a></h5>
+        </section>
+        <section class="section">
+          <h5 class="title"><a href="#">Section 3</a></h5>
+        </section>
+        <section class="section">
+          <h5 class="title"><a href="#">Section 4</a></h5>
+        </section>
+        <section class="section">
+          <h5 class="title"><a href="#">Section 5</a></h5>
+        </section>
+        <section class="section">
+          <h5 class="title"><a href="#">Section 6</a></h5>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="large-6 columns">
+   <div class="row">
+      <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
+      <div class="large-10 columns">
+        <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+        <ul class="inline-list">
+          <li><a href="">Reply</a></li>
+          <li><a href="">Share</a></li>
+        </ul>
+        <h6>2 Comments</h6>
+        <div class="row">
+          <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
+          <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+        </div>
+        <div class="row">
+          <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
+          <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
+      <div class="large-10 columns">
+        <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+        <ul class="inline-list">
+          <li><a href="">Reply</a></li>
+          <li><a href="">Share</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
+      <div class="large-10 columns">
+        <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+        <ul class="inline-list">
+          <li><a href="">Reply</a></li>
+          <li><a href="">Share</a></li>
+        </ul>
+        <h6>2 Comments</h6>
+        <div class="row">
+          <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
+          <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="large-3 columns hide-for-small">
+    <p><img src="http://placehold.it/300x440&text=[ad]"/></p>
+    <p><img src="http://placehold.it/300x440&text=[ad]"/></p>
+  </aside>
+</div>
+<footer class="row">
+  <div class="large-12 columns">
+    <hr/>
+    <div class="row">
+      <div class="large-5 columns">
+        <p>&copy; Copyright no one at all. Go to town.</p>
+      </div>
+      <div class="large-7 columns">
+        <ul class="inline-list right">
+          <li><a href="#">Section 1</a></li>
+          <li><a href="#">Section 2</a></li>
+          <li><a href="#">Section 3</a></li>
+          <li><a href="#">Section 4</a></li>
+          <li><a href="#">Section 5</a></li>
+          <li><a href="#">Section 6</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
 
 {% endblock %}
