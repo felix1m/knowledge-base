@@ -71,7 +71,8 @@ def init_app(app):
     debug = app.debug
     webassets = Environment(app)
     # add foundation sass files to sass compiler paths
-    webassets.config['SASS_LOAD_PATHS'] = ["../bower_components/foundation/scss/"]
+    webassets.config['SASS_LOAD_PATHS'] = ["../bower_components/foundation/scss/",
+                                           "."]
 
     webassets.register('css_kb', css_kb)
     webassets.register('shivs', shivs)

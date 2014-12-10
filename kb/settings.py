@@ -12,9 +12,6 @@ import os
 DEBUG = True
 SECRET_KEY = 'super-secret-key'
 
-
-
-TESTING = True
 SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost:3306/kb'
 
 # CELERY_BROKER_URL = 'redis://33.33.33.10:6379/0'
