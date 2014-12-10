@@ -35,6 +35,7 @@ class SeedDatabase():
 
       users_to_insert = [
           ['Philipp', 'Müller', 'philipp@user.de'],
+          ['Christoph', 'Schwerdtfeger', 'christoph@user.de'],
           ['Felix', 'Müller', 'felix@user.de'],
       ]
       for item in users_to_insert:
